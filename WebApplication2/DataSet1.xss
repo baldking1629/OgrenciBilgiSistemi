@@ -10,7 +10,7 @@
     <Shape ID="DesignTable:TBL_OGRETMEN" ZOrder="7" X="9" Y="434" Height="158" Width="284" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="99" />
     <Shape ID="DesignTable:ogrnotlar" ZOrder="5" X="645" Y="18" Height="388" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="28" OldDataTableHeight="28" SplitterPosition="260" />
     <Shape ID="DesignTable:TBL_DERSLER" ZOrder="4" X="341" Y="476" Height="62" Width="295" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="145" OldDataTableHeight="76" SplitterPosition="28" />
-    <Shape ID="DesignTable:TBL_MESAJLAR" ZOrder="1" X="998" Y="205" Height="319" Width="350" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="168" />
+    <Shape ID="DesignTable:TBL_MESAJLAR" ZOrder="1" X="998" Y="205" Height="267" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:TBL_DUYURULAR" ZOrder="3" X="353" Y="42" Height="229" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
   </Shapes>
   <Connectors>

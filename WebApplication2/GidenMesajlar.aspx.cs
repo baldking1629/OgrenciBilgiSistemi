@@ -12,9 +12,7 @@ namespace WebApplication2
         protected void Page_Load(object sender, EventArgs e)
         {
             DataSet1TableAdapters.TBL_MESAJLARTableAdapter dt = new DataSet1TableAdapters.TBL_MESAJLARTableAdapter();
-            Repeater1.DataSource = dt.OgretmenGidenMesajlar(Session["OGRNUMARA"].ToString());
-           
-            
+            Repeater1.DataSource = dt.OgrenciGiden(Session["OGRNUMARA"].ToString());
             Repeater1.DataBind();
         }
     }

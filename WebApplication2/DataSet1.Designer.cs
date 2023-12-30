@@ -5365,7 +5365,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT TBL_OGRENCI.OGRAD + ' ' + TBL_OGRENCI.OGRSOYAD AS 'OGRADSOYAD', OGRETMEN_AD + ' ' + OGRETMEN_SOYAD AS 'OGRETMEN_AD_SOYAD', TBL_MESAJLAR.GONDEREN, TBL_MESAJLAR.BASLIK, TBL_MESAJLAR.ICERIK, TBL_MESAJLAR.TARIH, TBL_MESAJLAR.MESAJID FROM TBL_MESAJLAR INNER JOIN TBL_OGRENCI ON TBL_MESAJLAR.GONDEREN = TBL_OGRENCI.NUMARA INNER JOIN TBL_OGRETMEN ON TBL_MESAJLAR.GONDEREN = TBL_OGRETMEN.NUMARA WHERE (TBL_MESAJLAR.ALICI = @ALICI)";
@@ -5373,18 +5373,80 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ALICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT (OGRTADSOYAD) AS \'OGRADSOYAD\' , GONDEREN,BASLIK,ICERIK,TARIH FROM TBL_MESA" +
-                "JLAR INNER JOIN TBL_OGRETMEN ON TBL_MESAJLAR.GONDEREN = TBL_OGRETMEN.OGRNUMARA W" +
-                "HERE (TBL_MESAJLAR.ALICI = @ALICI)";
+            this._commandCollection[1].CommandText = @"(
+  SELECT
+    (OGRAD + ' ' + OGRSOYAD) AS 'ADSOYAD',
+    GONDEREN,
+    BASLIK,
+    ICERIK,
+    TARIH
+  FROM
+    TBL_MESAJLAR
+  INNER JOIN
+    TBL_OGRENCI
+  ON
+    TBL_MESAJLAR.GONDEREN = TBL_OGRENCI.NUMARA
+  WHERE
+    (TBL_MESAJLAR.ALICI = @ALICI)
+)
+UNION ALL
+(
+  SELECT
+    OGRTADSOYAD AS 'ADSOYAD',
+    GONDEREN,
+    BASLIK,
+    ICERIK,
+    TARIH
+  FROM
+    TBL_MESAJLAR
+  INNER JOIN
+    TBL_OGRETMEN
+  ON
+    TBL_MESAJLAR.GONDEREN = TBL_OGRETMEN.OGRNUMARA
+  WHERE
+    (TBL_MESAJLAR.ALICI = @ALICI)
+)
+ORDER BY TARIH ASC";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ALICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT (OGRAD+\' \' + OGRSOYAD) AS \'OGRADSOYAD\' , GONDEREN,BASLIK,ICERIK,TARIH FROM" +
-                " TBL_MESAJLAR INNER JOIN TBL_OGRENCI ON TBL_MESAJLAR.GONDEREN = TBL_OGRENCI.NUMA" +
-                "RA WHERE (TBL_MESAJLAR.ALICI = @ALICI)";
+            this._commandCollection[2].CommandText = @"(
+  SELECT
+    (OGRAD + ' ' + OGRSOYAD) AS 'ADSOYAD',
+    ALICI,
+    BASLIK,
+    ICERIK,
+    TARIH
+  FROM
+    TBL_MESAJLAR
+  INNER JOIN
+    TBL_OGRENCI
+  ON
+    TBL_MESAJLAR.ALICI = TBL_OGRENCI.NUMARA
+  WHERE
+    (TBL_MESAJLAR.GONDEREN = @GONDEREN)
+)
+UNION ALL
+(
+  SELECT
+    OGRTADSOYAD AS 'ADSOYAD',
+    ALICI,
+    BASLIK,
+    ICERIK,
+    TARIH
+  FROM
+    TBL_MESAJLAR
+  INNER JOIN
+    TBL_OGRETMEN
+  ON
+    TBL_MESAJLAR.ALICI = TBL_OGRETMEN.OGRNUMARA
+  WHERE
+    (TBL_MESAJLAR.GONDEREN = @GONDEREN)
+)
+ORDER BY TARIH ASC";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ALICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GONDEREN", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT BASLIK, GONDEREN, ICERIK, MESAJID, TARIH FROM TBL_MESAJLAR WHERE (GONDEREN" +
@@ -5393,19 +5455,13 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GONDEREN", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "GONDEREN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT BASLIK, GONDEREN, ICERIK, MESAJID, TARIH FROM TBL_MESAJLAR WHERE (GONDEREN" +
-                " = @GONDEREN)";
+            this._commandCollection[4].CommandText = "INSERT INTO TBL_MESAJLAR\r\n                  (GONDEREN, ALICI, BASLIK, ICERIK)\r\nVA" +
+                "LUES (@GONDEREN,@ALICI,@BASLIK,@ICERIK)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GONDEREN", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "GONDEREN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "INSERT INTO TBL_MESAJLAR\r\n                  (GONDEREN, ALICI, BASLIK, ICERIK)\r\nVA" +
-                "LUES (@GONDEREN,@ALICI,@BASLIK,@ICERIK)";
-            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GONDEREN", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "GONDEREN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ALICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BASLIK", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "BASLIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ICERIK", global::System.Data.SqlDbType.VarChar, 500, global::System.Data.ParameterDirection.Input, 0, 0, "ICERIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ALICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BASLIK", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "BASLIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ICERIK", global::System.Data.SqlDbType.VarChar, 500, global::System.Data.ParameterDirection.Input, 0, 0, "ICERIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5448,44 +5504,8 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(DataSet1.TBL_MESAJLARDataTable dataTable, string ALICI) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((ALICI == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ALICI));
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSet1.TBL_MESAJLARDataTable OgretmendenOgrenciyeGelen(string ALICI) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((ALICI == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ALICI));
-            }
-            DataSet1.TBL_MESAJLARDataTable dataTable = new DataSet1.TBL_MESAJLARDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByOgrencıGelenKutusu1(DataSet1.TBL_MESAJLARDataTable dataTable, string ALICI) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((ALICI == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5504,7 +5524,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSet1.TBL_MESAJLARDataTable OgrencıGelenKutusu1(string ALICI) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((ALICI == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5521,7 +5541,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByOgrenciGiden(DataSet1.TBL_MESAJLARDataTable dataTable, string GONDEREN) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((GONDEREN == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5540,7 +5560,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSet1.TBL_MESAJLARDataTable OgrenciGiden(string GONDEREN) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((GONDEREN == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5557,7 +5577,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByOgretmenGidenMesajlar(DataSet1.TBL_MESAJLARDataTable dataTable, string GONDEREN) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((GONDEREN == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5576,7 +5596,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSet1.TBL_MESAJLARDataTable OgretmenGidenMesajlar(string GONDEREN) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((GONDEREN == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5747,7 +5767,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int MesajGonder(string GONDEREN, string ALICI, string BASLIK, string ICERIK) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((GONDEREN == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
