@@ -11,7 +11,7 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            TxtGonderen.Text = Session["OGRNUMARA"].ToString();
         }
 
         protected void BtnGonder_Click(object sender, EventArgs e)

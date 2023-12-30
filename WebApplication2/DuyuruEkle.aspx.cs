@@ -9,24 +9,18 @@ namespace WebApplication2
 {
     public partial class DuyuruEkle : System.Web.UI.Page
     {
+        string DuyuruGonderen;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack == false)
-            {
+            DuyuruGonderen = Session["OGRNUMARA"].ToString();
 
-
-                DataSet1TableAdapters.TBL_OGRETMENTableAdapter dt = new DataSet1TableAdapters.TBL_OGRETMENTableAdapter();
-                DropDownList1.DataSource = dt.OgretmenListesi();
-                DropDownList1.DataTextField = "OGRTADSOYAD";
-                DropDownList1.DataValueField = "OGRTID";
-                DropDownList1.DataBind();
-            }
+           
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             DataSet1TableAdapters.TBL_DUYURULARTableAdapter dt = new DataSet1TableAdapters.TBL_DUYURULARTableAdapter();
-            dt.DuyuruEkle(TxtDuyuruBaslik.Text, TxtDuyuruicerik.Value.ToString(), Convert.ToInt32(DropDownList1.SelectedValue));
+            dt.DuyuruEkle(TxtDuyuruBaslik.Text, TxtDuyuruicerik.Value.ToString(), Convert.ToInt32(DuyuruGonderen));
             Response.Redirect("DuyuruListesi.aspx");
         }
     }

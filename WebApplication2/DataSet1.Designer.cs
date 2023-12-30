@@ -38,8 +38,6 @@ namespace WebApplication2 {
         
         private global::System.Data.DataRelation relationFK_TBL_OGRETMEN_TBL_DERSLER;
         
-        private global::System.Data.DataRelation relationFK_TBL_DUYURULAR_TBL_OGRETMEN;
-        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -319,7 +317,6 @@ namespace WebApplication2 {
                 }
             }
             this.relationFK_TBL_OGRETMEN_TBL_DERSLER = this.Relations["FK_TBL_OGRETMEN_TBL_DERSLER"];
-            this.relationFK_TBL_DUYURULAR_TBL_OGRETMEN = this.Relations["FK_TBL_DUYURULAR_TBL_OGRETMEN"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -346,10 +343,6 @@ namespace WebApplication2 {
                         this.tableTBL_DERSLER.DERSIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTBL_OGRETMEN.OGRTBRANSColumn}, false);
             this.Relations.Add(this.relationFK_TBL_OGRETMEN_TBL_DERSLER);
-            this.relationFK_TBL_DUYURULAR_TBL_OGRETMEN = new global::System.Data.DataRelation("FK_TBL_DUYURULAR_TBL_OGRETMEN", new global::System.Data.DataColumn[] {
-                        this.tableTBL_OGRETMEN.OGRTIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTBL_DUYURULAR.DUYURUOGRTColumn}, false);
-            this.Relations.Add(this.relationFK_TBL_DUYURULAR_TBL_OGRETMEN);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2101,13 +2094,13 @@ namespace WebApplication2 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class TBL_DUYURULARDataTable : global::System.Data.TypedTableBase<TBL_DUYURULARRow> {
             
-            private global::System.Data.DataColumn columnDUYURUID;
-            
             private global::System.Data.DataColumn columnDUYURUBASLIK;
             
             private global::System.Data.DataColumn columnDUYURUICERIK;
             
-            private global::System.Data.DataColumn columnDUYURUOGRT;
+            private global::System.Data.DataColumn columnOGRTADSOYAD;
+            
+            private global::System.Data.DataColumn columnDUYURUID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -2144,14 +2137,6 @@ namespace WebApplication2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DUYURUIDColumn {
-                get {
-                    return this.columnDUYURUID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn DUYURUBASLIKColumn {
                 get {
                     return this.columnDUYURUBASLIK;
@@ -2168,9 +2153,17 @@ namespace WebApplication2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DUYURUOGRTColumn {
+            public global::System.Data.DataColumn OGRTADSOYADColumn {
                 get {
-                    return this.columnDUYURUOGRT;
+                    return this.columnOGRTADSOYAD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DUYURUIDColumn {
+                get {
+                    return this.columnDUYURUID;
                 }
             }
             
@@ -2211,16 +2204,13 @@ namespace WebApplication2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TBL_DUYURULARRow AddTBL_DUYURULARRow(string DUYURUBASLIK, string DUYURUICERIK, TBL_OGRETMENRow parentTBL_OGRETMENRowByFK_TBL_DUYURULAR_TBL_OGRETMEN) {
+            public TBL_DUYURULARRow AddTBL_DUYURULARRow(string DUYURUBASLIK, string DUYURUICERIK, string OGRTADSOYAD) {
                 TBL_DUYURULARRow rowTBL_DUYURULARRow = ((TBL_DUYURULARRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         DUYURUBASLIK,
                         DUYURUICERIK,
+                        OGRTADSOYAD,
                         null};
-                if ((parentTBL_OGRETMENRowByFK_TBL_DUYURULAR_TBL_OGRETMEN != null)) {
-                    columnValuesArray[3] = parentTBL_OGRETMENRowByFK_TBL_DUYURULAR_TBL_OGRETMEN[0];
-                }
                 rowTBL_DUYURULARRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTBL_DUYURULARRow);
                 return rowTBL_DUYURULARRow;
@@ -2250,33 +2240,34 @@ namespace WebApplication2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnDUYURUID = base.Columns["DUYURUID"];
                 this.columnDUYURUBASLIK = base.Columns["DUYURUBASLIK"];
                 this.columnDUYURUICERIK = base.Columns["DUYURUICERIK"];
-                this.columnDUYURUOGRT = base.Columns["DUYURUOGRT"];
+                this.columnOGRTADSOYAD = base.Columns["OGRTADSOYAD"];
+                this.columnDUYURUID = base.Columns["DUYURUID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnDUYURUID = new global::System.Data.DataColumn("DUYURUID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDUYURUID);
                 this.columnDUYURUBASLIK = new global::System.Data.DataColumn("DUYURUBASLIK", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDUYURUBASLIK);
                 this.columnDUYURUICERIK = new global::System.Data.DataColumn("DUYURUICERIK", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDUYURUICERIK);
-                this.columnDUYURUOGRT = new global::System.Data.DataColumn("DUYURUOGRT", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDUYURUOGRT);
+                this.columnOGRTADSOYAD = new global::System.Data.DataColumn("OGRTADSOYAD", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOGRTADSOYAD);
+                this.columnDUYURUID = new global::System.Data.DataColumn("DUYURUID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDUYURUID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDUYURUID}, true));
+                this.columnDUYURUBASLIK.MaxLength = 50;
+                this.columnDUYURUICERIK.MaxLength = 200;
+                this.columnOGRTADSOYAD.MaxLength = 50;
                 this.columnDUYURUID.AutoIncrement = true;
                 this.columnDUYURUID.AutoIncrementSeed = -1;
                 this.columnDUYURUID.AutoIncrementStep = -1;
                 this.columnDUYURUID.AllowDBNull = false;
                 this.columnDUYURUID.ReadOnly = true;
                 this.columnDUYURUID.Unique = true;
-                this.columnDUYURUBASLIK.MaxLength = 50;
-                this.columnDUYURUICERIK.MaxLength = 200;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2687,17 +2678,6 @@ namespace WebApplication2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetOGRTBRANSNull() {
                 this[this.tableTBL_OGRETMEN.OGRTBRANSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TBL_DUYURULARRow[] GetTBL_DUYURULARRows() {
-                if ((this.Table.ChildRelations["FK_TBL_DUYURULAR_TBL_OGRETMEN"] == null)) {
-                    return new TBL_DUYURULARRow[0];
-                }
-                else {
-                    return ((TBL_DUYURULARRow[])(base.GetChildRows(this.Table.ChildRelations["FK_TBL_DUYURULAR_TBL_OGRETMEN"])));
-                }
             }
         }
         
@@ -3226,17 +3206,6 @@ namespace WebApplication2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int DUYURUID {
-                get {
-                    return ((int)(this[this.tableTBL_DUYURULAR.DUYURUIDColumn]));
-                }
-                set {
-                    this[this.tableTBL_DUYURULAR.DUYURUIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string DUYURUBASLIK {
                 get {
                     try {
@@ -3269,28 +3238,28 @@ namespace WebApplication2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int DUYURUOGRT {
+            public string OGRTADSOYAD {
                 get {
                     try {
-                        return ((int)(this[this.tableTBL_DUYURULAR.DUYURUOGRTColumn]));
+                        return ((string)(this[this.tableTBL_DUYURULAR.OGRTADSOYADColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DUYURUOGRT\' in table \'TBL_DUYURULAR\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'OGRTADSOYAD\' in table \'TBL_DUYURULAR\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTBL_DUYURULAR.DUYURUOGRTColumn] = value;
+                    this[this.tableTBL_DUYURULAR.OGRTADSOYADColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TBL_OGRETMENRow TBL_OGRETMENRow {
+            public int DUYURUID {
                 get {
-                    return ((TBL_OGRETMENRow)(this.GetParentRow(this.Table.ParentRelations["FK_TBL_DUYURULAR_TBL_OGRETMEN"])));
+                    return ((int)(this[this.tableTBL_DUYURULAR.DUYURUIDColumn]));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_TBL_DUYURULAR_TBL_OGRETMEN"]);
+                    this[this.tableTBL_DUYURULAR.DUYURUIDColumn] = value;
                 }
             }
             
@@ -3320,14 +3289,14 @@ namespace WebApplication2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsDUYURUOGRTNull() {
-                return this.IsNull(this.tableTBL_DUYURULAR.DUYURUOGRTColumn);
+            public bool IsOGRTADSOYADNull() {
+                return this.IsNull(this.tableTBL_DUYURULAR.OGRTADSOYADColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetDUYURUOGRTNull() {
-                this[this.tableTBL_DUYURULAR.DUYURUOGRTColumn] = global::System.Convert.DBNull;
+            public void SetOGRTADSOYADNull() {
+                this[this.tableTBL_DUYURULAR.OGRTADSOYADColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3712,7 +3681,7 @@ namespace WebApplication2.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TBL_OGRENCI.*\nFROM     TBL_OGRENCI";
+            this._commandCollection[0].CommandText = "SELECT TBL_OGRENCI.*\r\nFROM     TBL_OGRENCI";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -4346,7 +4315,7 @@ namespace WebApplication2.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TBL_OGRETMEN.*\nFROM     TBL_OGRETMEN";
+            this._commandCollection[0].CommandText = "SELECT TBL_OGRETMEN.*\r\nFROM     TBL_OGRETMEN";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4964,7 +4933,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TBL_DERSLER.*\nFROM     TBL_DERSLER";
+            this._commandCollection[0].CommandText = "SELECT TBL_DERSLER.*\r\nFROM     TBL_DERSLER";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -4984,7 +4953,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DERSID", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "DERSID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT DERSID,DERSAD\nFROM     TBL_DERSLER WHERE DERSID=@DERSID";
+            this._commandCollection[4].CommandText = "SELECT DERSID,DERSAD\r\nFROM     TBL_DERSLER WHERE DERSID=@DERSID";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DERSID", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "DERSID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -5396,42 +5365,47 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ALICI, BASLIK, GONDEREN, ICERIK, MESAJID, TARIH FROM TBL_MESAJLAR WHERE (A" +
-                "LICI= @ALICI)";
+            this._commandCollection[0].CommandText = @"SELECT TBL_OGRENCI.OGRAD + ' ' + TBL_OGRENCI.OGRSOYAD AS 'OGRADSOYAD', OGRETMEN_AD + ' ' + OGRETMEN_SOYAD AS 'OGRETMEN_AD_SOYAD', TBL_MESAJLAR.GONDEREN, TBL_MESAJLAR.BASLIK, TBL_MESAJLAR.ICERIK, TBL_MESAJLAR.TARIH, TBL_MESAJLAR.MESAJID FROM TBL_MESAJLAR INNER JOIN TBL_OGRENCI ON TBL_MESAJLAR.GONDEREN = TBL_OGRENCI.NUMARA INNER JOIN TBL_OGRETMEN ON TBL_MESAJLAR.GONDEREN = TBL_OGRETMEN.NUMARA WHERE (TBL_MESAJLAR.ALICI = @ALICI)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ALICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT (OGRAD+\' \' + OGRSOYAD) AS \'OGRADSOYAD\' , GONDEREN,BASLIK,ICERIK,TARIH FROM" +
-                " TBL_MESAJLAR INNER JOIN TBL_OGRENCI ON TBL_MESAJLAR.GONDEREN = TBL_OGRENCI.NUMA" +
-                "RA WHERE (TBL_MESAJLAR.ALICI = @ALICI)";
+            this._commandCollection[1].CommandText = "SELECT (OGRTADSOYAD) AS \'OGRADSOYAD\' , GONDEREN,BASLIK,ICERIK,TARIH FROM TBL_MESA" +
+                "JLAR INNER JOIN TBL_OGRETMEN ON TBL_MESAJLAR.GONDEREN = TBL_OGRETMEN.OGRNUMARA W" +
+                "HERE (TBL_MESAJLAR.ALICI = @ALICI)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ALICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT (OGRAD+\' \' + OGRSOYAD) AS \'OGRADSOYAD\' ,BASLIK,ICERIK,TARIH FROM TBL_MESAJ" +
-                "LAR INNER JOIN TBL_OGRENCI ON TBL_MESAJLAR.ALICI = TBL_OGRENCI.NUMARA WHERE GOND" +
-                "EREN = @GONDEREN";
+            this._commandCollection[2].CommandText = "SELECT (OGRAD+\' \' + OGRSOYAD) AS \'OGRADSOYAD\' , GONDEREN,BASLIK,ICERIK,TARIH FROM" +
+                " TBL_MESAJLAR INNER JOIN TBL_OGRENCI ON TBL_MESAJLAR.GONDEREN = TBL_OGRENCI.NUMA" +
+                "RA WHERE (TBL_MESAJLAR.ALICI = @ALICI)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GONDEREN", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "GONDEREN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ALICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT ALICI, BASLIK, GONDEREN, ICERIK, MESAJID, TARIH FROM TBL_MESAJLAR WHERE (G" +
-                "ONDEREN= @GONDEREN)";
+            this._commandCollection[3].CommandText = "SELECT BASLIK, GONDEREN, ICERIK, MESAJID, TARIH FROM TBL_MESAJLAR WHERE (GONDEREN" +
+                " = @GONDEREN)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GONDEREN", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "GONDEREN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "INSERT INTO TBL_MESAJLAR\n                  (GONDEREN, ALICI, BASLIK, ICERIK)\nVALU" +
-                "ES (@GONDEREN,@ALICI,@BASLIK,@ICERIK)";
+            this._commandCollection[4].CommandText = "SELECT BASLIK, GONDEREN, ICERIK, MESAJID, TARIH FROM TBL_MESAJLAR WHERE (GONDEREN" +
+                " = @GONDEREN)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GONDEREN", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "GONDEREN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ALICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BASLIK", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "BASLIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ICERIK", global::System.Data.SqlDbType.VarChar, 500, global::System.Data.ParameterDirection.Input, 0, 0, "ICERIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "INSERT INTO TBL_MESAJLAR\r\n                  (GONDEREN, ALICI, BASLIK, ICERIK)\r\nVA" +
+                "LUES (@GONDEREN,@ALICI,@BASLIK,@ICERIK)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GONDEREN", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "GONDEREN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ALICI", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ALICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BASLIK", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "BASLIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ICERIK", global::System.Data.SqlDbType.VarChar, 500, global::System.Data.ParameterDirection.Input, 0, 0, "ICERIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5474,8 +5448,44 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByOgrencıGelenKutusu1(DataSet1.TBL_MESAJLARDataTable dataTable, string ALICI) {
+        public virtual int FillBy(DataSet1.TBL_MESAJLARDataTable dataTable, string ALICI) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((ALICI == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ALICI));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSet1.TBL_MESAJLARDataTable OgretmendenOgrenciyeGelen(string ALICI) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((ALICI == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ALICI));
+            }
+            DataSet1.TBL_MESAJLARDataTable dataTable = new DataSet1.TBL_MESAJLARDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByOgrencıGelenKutusu1(DataSet1.TBL_MESAJLARDataTable dataTable, string ALICI) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((ALICI == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5494,7 +5504,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSet1.TBL_MESAJLARDataTable OgrencıGelenKutusu1(string ALICI) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((ALICI == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5511,7 +5521,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByOgrenciGiden(DataSet1.TBL_MESAJLARDataTable dataTable, string GONDEREN) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((GONDEREN == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5530,7 +5540,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSet1.TBL_MESAJLARDataTable OgrenciGiden(string GONDEREN) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((GONDEREN == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5547,7 +5557,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByOgretmenGidenMesajlar(DataSet1.TBL_MESAJLARDataTable dataTable, string GONDEREN) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((GONDEREN == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5566,7 +5576,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSet1.TBL_MESAJLARDataTable OgretmenGidenMesajlar(string GONDEREN) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((GONDEREN == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5737,7 +5747,7 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int MesajGonder(string GONDEREN, string ALICI, string BASLIK, string ICERIK) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((GONDEREN == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5901,33 +5911,11 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "TBL_DUYURULAR";
-            tableMapping.ColumnMappings.Add("DUYURUID", "DUYURUID");
             tableMapping.ColumnMappings.Add("DUYURUBASLIK", "DUYURUBASLIK");
             tableMapping.ColumnMappings.Add("DUYURUICERIK", "DUYURUICERIK");
-            tableMapping.ColumnMappings.Add("DUYURUOGRT", "DUYURUOGRT");
+            tableMapping.ColumnMappings.Add("OGRTADSOYAD", "OGRTADSOYAD");
+            tableMapping.ColumnMappings.Add("DUYURUID", "DUYURUID");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [TBL_DUYURULAR] WHERE (([DUYURUID] = @Original_DUYURUID))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DUYURUID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DUYURUID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [TBL_DUYURULAR] ([DUYURUBASLIK], [DUYURUICERIK], [DUYURUOGRT]) VALUES" +
-                " (@DUYURUBASLIK, @DUYURUICERIK, @DUYURUOGRT)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DUYURUBASLIK", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DUYURUBASLIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DUYURUICERIK", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DUYURUICERIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DUYURUOGRT", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DUYURUOGRT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [TBL_DUYURULAR] SET [DUYURUBASLIK] = @DUYURUBASLIK, [DUYURUICERIK] = @DUYU" +
-                "RUICERIK, [DUYURUOGRT] = @DUYURUOGRT WHERE (([DUYURUID] = @Original_DUYURUID))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DUYURUBASLIK", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DUYURUBASLIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DUYURUICERIK", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DUYURUICERIK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DUYURUOGRT", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DUYURUOGRT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DUYURUID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DUYURUID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5943,7 +5931,9 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TBL_DUYURULAR.*\nFROM     TBL_DUYURULAR";
+            this._commandCollection[0].CommandText = "SELECT (OGRTADSOYAD) AS \'OGRTADSOYAD\', DUYURUBASLIK, DUYURUICERIK,DUYURUID FROM T" +
+                "BL_DUYURULAR INNER JOIN TBL_OGRETMEN ON TBL_DUYURULAR.DUYURUOGRT = TBL_OGRETMEN." +
+                "OGRTID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -6022,136 +6012,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
             DataSet1.TBL_DUYURULARDataTable dataTable = new DataSet1.TBL_DUYURULARDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.TBL_DUYURULARDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
-            return this.Adapter.Update(dataSet, "TBL_DUYURULAR");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_DUYURUID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_DUYURUID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string DUYURUBASLIK, string DUYURUICERIK, global::System.Nullable<int> DUYURUOGRT) {
-            if ((DUYURUBASLIK == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(DUYURUBASLIK));
-            }
-            if ((DUYURUICERIK == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(DUYURUICERIK));
-            }
-            if ((DUYURUOGRT.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(DUYURUOGRT.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string DUYURUBASLIK, string DUYURUICERIK, global::System.Nullable<int> DUYURUOGRT, int Original_DUYURUID) {
-            if ((DUYURUBASLIK == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(DUYURUBASLIK));
-            }
-            if ((DUYURUICERIK == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(DUYURUICERIK));
-            }
-            if ((DUYURUOGRT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(DUYURUOGRT.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_DUYURUID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6276,8 +6136,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         
         private TBL_MESAJLARTableAdapter _tBL_MESAJLARTableAdapter;
         
-        private TBL_DUYURULARTableAdapter _tBL_DUYURULARTableAdapter;
-        
         private bool _backupDataSetBeforeUpdate;
         
         private global::System.Data.IDbConnection _connection;
@@ -6351,20 +6209,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public TBL_DUYURULARTableAdapter TBL_DUYURULARTableAdapter {
-            get {
-                return this._tBL_DUYURULARTableAdapter;
-            }
-            set {
-                this._tBL_DUYURULARTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -6398,10 +6242,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
                             && (this._tBL_MESAJLARTableAdapter.Connection != null))) {
                     return this._tBL_MESAJLARTableAdapter.Connection;
                 }
-                if (((this._tBL_DUYURULARTableAdapter != null) 
-                            && (this._tBL_DUYURULARTableAdapter.Connection != null))) {
-                    return this._tBL_DUYURULARTableAdapter.Connection;
-                }
                 return null;
             }
             set {
@@ -6427,9 +6267,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
                 if ((this._tBL_MESAJLARTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._tBL_DUYURULARTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 return count;
             }
         }
@@ -6450,15 +6287,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._tBL_OGRETMENTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TBL_OGRETMEN.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tBL_OGRETMENTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._tBL_OGRENCITableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.TBL_OGRENCI.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -6468,21 +6296,21 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._tBL_OGRETMENTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.TBL_OGRETMEN.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tBL_OGRETMENTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._tBL_MESAJLARTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.TBL_MESAJLAR.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._tBL_MESAJLARTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._tBL_DUYURULARTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TBL_DUYURULAR.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tBL_DUYURULARTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -6504,14 +6332,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._tBL_OGRETMENTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TBL_OGRETMEN.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tBL_OGRETMENTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._tBL_OGRENCITableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.TBL_OGRENCI.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -6520,19 +6340,19 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._tBL_OGRETMENTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.TBL_OGRETMEN.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tBL_OGRETMENTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._tBL_MESAJLARTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.TBL_MESAJLAR.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._tBL_MESAJLARTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._tBL_DUYURULARTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TBL_DUYURULAR.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tBL_DUYURULARTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -6546,14 +6366,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._tBL_DUYURULARTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TBL_DUYURULAR.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tBL_DUYURULARTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._tBL_MESAJLARTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.TBL_MESAJLAR.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -6562,19 +6374,19 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._tBL_OGRENCITableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TBL_OGRENCI.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tBL_OGRENCITableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._tBL_OGRETMENTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.TBL_OGRETMEN.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._tBL_OGRETMENTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._tBL_OGRENCITableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.TBL_OGRENCI.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tBL_OGRENCITableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6645,11 +6457,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._tBL_DUYURULARTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._tBL_DUYURULARTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -6716,15 +6523,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
                     if (this._tBL_MESAJLARTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._tBL_MESAJLARTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._tBL_MESAJLARTableAdapter.Adapter);
-                    }
-                }
-                if ((this._tBL_DUYURULARTableAdapter != null)) {
-                    revertConnections.Add(this._tBL_DUYURULARTableAdapter, this._tBL_DUYURULARTableAdapter.Connection);
-                    this._tBL_DUYURULARTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._tBL_DUYURULARTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._tBL_DUYURULARTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._tBL_DUYURULARTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._tBL_DUYURULARTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -6800,10 +6598,6 @@ INNER JOIN TBL_DERSLER ON TBL_DERSLER.DERSID= TBL_NOTLAR.DERSNID WHERE NOTID=@NO
                 if ((this._tBL_MESAJLARTableAdapter != null)) {
                     this._tBL_MESAJLARTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tBL_MESAJLARTableAdapter]));
                     this._tBL_MESAJLARTableAdapter.Transaction = null;
-                }
-                if ((this._tBL_DUYURULARTableAdapter != null)) {
-                    this._tBL_DUYURULARTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tBL_DUYURULARTableAdapter]));
-                    this._tBL_DUYURULARTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

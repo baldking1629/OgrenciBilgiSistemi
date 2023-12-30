@@ -4,11 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <form id="Form1" runat="server">
         <div class="form-group">
-            <div>
-                <asp:Label for="TxtDuyuruId" runat="server">DUYURU ID</asp:Label>
-                <asp:TextBox ID="TxtDuyuruId" runat="server" CssClass="form-control" Width="200px"></asp:TextBox>
-            </div>
-            <br>
+           
             <div>
                 <asp:Label for="TxtDuyuruBaslik" runat="server">DUYURU BAŞLIĞI </asp:Label>
                 <asp:TextBox ID="TxtDuyuruBaslik" runat="server" CssClass="form-control" Width="200px"></asp:TextBox>

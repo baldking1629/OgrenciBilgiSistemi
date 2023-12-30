@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Ogretmen.Master" AutoEventWireup="true" CodeBehind="OgrenciEkle.aspx.cs" Inherits="WebApplication2.OgrenciEkle" %>
+﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/Ogretmen.Master" AutoEventWireup="true" CodeBehind="OgrenciEkle.aspx.cs" Inherits="WebApplication2.OgrenciEkle" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
@@ -31,9 +31,12 @@
             </div>
              <br>
             <div>
-                
-                <asp:Button ID="Button1" runat="server" Text="Kaydet" OnClick="Button1_Click1" />
-            </div>
+        <asp:Label ID="lblHataMesaji" runat="server" Visible="false" ForeColor="Red"></asp:Label>    
+                <br />
+           <asp:Button ID="Button2" runat="server" Text="Kaydet" OnClick="Button1_Click1" />       
+      </div>
+    </div>
+            
         </div>
 
     </form>

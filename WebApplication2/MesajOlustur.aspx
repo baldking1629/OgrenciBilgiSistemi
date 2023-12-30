@@ -6,7 +6,7 @@
         <div class="form-group">
             <div>
                 <asp:Label for="TxtGonderen" runat="server" Width="300px">GÖNDEREN</asp:Label>
-                 <asp:TextBox ID="TxtGonderen" runat="server" CssClass="form-control" Width="300px" ></asp:TextBox>
+                 <asp:TextBox ID="TxtGonderen" runat="server" CssClass="form-control" Width="300px" Enabled="false" ></asp:TextBox>
             </div>
             <br>
             <div>

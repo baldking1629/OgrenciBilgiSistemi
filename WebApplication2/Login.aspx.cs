@@ -10,7 +10,7 @@ namespace WebApplication2
 {
     public partial class Login : System.Web.UI.Page
     {
-        SqlConnection baglanti = new SqlConnection(@"Data Source=DESKTOP-6IG7MPQ\SQLEXPRESS;Initial Catalog=UdemyWeb;Integrated Security=True");
+        SqlConnection baglanti = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UdemyWeb;Integrated Security=True");
         protected void Page_Load(object sender, EventArgs e)
         {
 

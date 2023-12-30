@@ -13,23 +13,20 @@
         }
     </style>
 </head>
-<body >
+<body style="background-image:url(' logo/2539d05d-da06-4c58-94fe-c6c4b88befb4.jpg')">
 
     <form id="form1" runat="server">
 
         <div style="width: 370px; margin: auto">
-            <div style="margin: auto; text-align: center; margin-top:150px;">
-                <h4>ÖĞRENCİ BİLGİ SİSTEMİ</h4>
-            </div>
-            <br />
+            
 
             <div style="margin: auto; text-align: center;">
-                <img class="auto-style1"  src="logo/Kayseri_Üniversitesi_logo.png"  /></div>
+                <img class="auto-style1"  src="logo/Kayseri_Üniversitesi_logo.jpg"  /></div>
 
             <br />
             <div>
-                <asp:Label for="TxtNumara" runat="server">KULLANICI ADI </asp:Label>
-                <asp:TextBox ID="TxtNumara" runat="server" CssClass="form-control" Width="350px"></asp:TextBox>
+                
+                <asp:TextBox ID="TxtNumara" runat="server" CssClass="form-control" Width="350px" ></asp:TextBox>
             </div>
             <br />
             <div>

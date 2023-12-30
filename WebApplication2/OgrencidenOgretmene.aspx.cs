@@ -20,7 +20,7 @@ namespace WebApplication2
                 DataSet1TableAdapters.TBL_OGRETMENTableAdapter dt = new DataSet1TableAdapters.TBL_OGRETMENTableAdapter();
                 DropDownList1.DataSource = dt.OgretmenListesi();
                 DropDownList1.DataTextField = "OGRTADSOYAD";
-                DropDownList1.DataValueField = "OGRTID";
+                DropDownList1.DataValueField = "OGRNUMARA";
                 DropDownList1.DataBind();
             }
         }

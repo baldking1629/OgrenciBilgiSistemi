@@ -13,7 +13,7 @@ namespace WebApplication2
         {
             DataSet1TableAdapters.TBL_MESAJLARTableAdapter dt = new DataSet1TableAdapters.TBL_MESAJLARTableAdapter();
             Repeater1.DataSource = dt.OgrencıGelenKutusu1(Session["NUMARA"].ToString());
-            
+            //Repeater1.DataSource = dt.OgretmendenOgrenciyeGelen(Session["NUMARA"].ToString());
             Repeater1.DataBind();
         }
     }

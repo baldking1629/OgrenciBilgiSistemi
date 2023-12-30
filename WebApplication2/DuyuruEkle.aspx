@@ -5,11 +5,8 @@
     
     <form id="Form1" runat="server">
         <div class="form-group">
-            <div>
-                <asp:Label for="DropDownList1" runat="server" Width="300px">DUYURU SAHİBİ</asp:Label>
-                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" Width="300px"></asp:DropDownList>
-            </div>
-            <br>
+             
+            
             <div>
                 <asp:Label for="TxtDuyuruBaslik" runat="server">DUYURU BAŞLIĞI </asp:Label>
                 <asp:TextBox ID="TxtDuyuruBaslik" runat="server" CssClass="form-control" Width="200px"></asp:TextBox>

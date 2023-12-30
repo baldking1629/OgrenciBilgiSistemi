@@ -12,12 +12,12 @@ namespace WebApplication2
         int id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            id = Convert.ToInt32(Request.QueryString["DUYURUID"].ToString());
+
             if (Page.IsPostBack == false)
             {
-                id = Convert.ToInt32(Request.QueryString["DUYURUID"].ToString());
                 DataSet1TableAdapters.TBL_DUYURULARTableAdapter dt = new DataSet1TableAdapters.TBL_DUYURULARTableAdapter();
                 dt.DuyuruSec(id);
-                TxtDuyuruId.Text = id.ToString();
                 TxtDuyuruBaslik.Text = dt.DuyuruSec(id)[0].DUYURUBASLIK;
                 TxtDuyuruicerik.Value = dt.DuyuruSec(id)[0].DUYURUICERIK;
             }
@@ -26,7 +26,7 @@ namespace WebApplication2
         protected void Button1_Click(object sender, EventArgs e)
         {
             DataSet1TableAdapters.TBL_DUYURULARTableAdapter dt = new DataSet1TableAdapters.TBL_DUYURULARTableAdapter();
-            dt.DuyuruGuncelle(TxtDuyuruBaslik.Text, TxtDuyuruicerik.Value, Convert.ToInt32(TxtDuyuruId.Text));
+            dt.DuyuruGuncelle(TxtDuyuruBaslik.Text, TxtDuyuruicerik.Value, id);
             Response.Redirect("DuyuruListesi.aspx");
         }
     }

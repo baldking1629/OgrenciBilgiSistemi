@@ -36,7 +36,7 @@
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li><a href="Anasayfa.aspx"><i class="glyphicon glyphicon-list"></i>Öğrenci Listesi</a></li>
                         <li><a href="OgrenciEkle.aspx"><i class="glyphicon glyphicon-plus"></i>Öğrenci Ekle</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-search"></i>Öğrenci Bul</a></li>
+                    
 
                     </ul>
                 </li>
