@@ -37,7 +37,7 @@
             <asp:Button ID="Button1" runat="server" Text="GİRİŞ YAP" CssClass="btn btn-info" Width="350px" OnClick="Button1_Click"   />
             <br />
             <br />
-            <asp:Button ID="Button2" runat="server" Text="ŞİFREMİ UNUTTUM" CssClass="btn btn-default  " Width="170px" />
+            <asp:Button ID="Button2" runat="server" Text="ŞİFREMİ UNUTTUM" CssClass="btn btn-default  " Width="170px" OnClick="Button2_Click"/>
             <asp:Button ID="Button3" runat="server" Text="ÖĞRETMEN GİRİŞİ" CssClass="btn btn-info  " Width="170px" OnClick="Button3_Click" />
         </div>
 

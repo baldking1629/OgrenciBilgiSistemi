@@ -13,6 +13,7 @@ namespace WebApplication2
         {
             DataSet1TableAdapters.ogrnotlarTableAdapter dt = new DataSet1TableAdapters.ogrnotlarTableAdapter();
             Repeater1.DataSource = dt.NotlarıGetir();
+
             Repeater1.DataBind();
         }
     }

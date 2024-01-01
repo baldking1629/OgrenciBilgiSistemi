@@ -11,12 +11,14 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int ogrtıd = Convert.ToInt32(Session["OGRTID"]) ;
+
             if (Page.IsPostBack == false)
             {
                 DataSet1TableAdapters.TBL_DERSLERTableAdapter dt = new DataSet1TableAdapters.TBL_DERSLERTableAdapter();
                 DropDownList1.DataSource = dt.DersListesi();
                 DropDownList1.DataTextField = "DERSAD";
-                DropDownList1.DataValueField = "DERSID";
+                DropDownList1.DataValueField = "DersID";
                 DropDownList1.DataBind();
 
                 DataSet1TableAdapters.TBL_OGRENCITableAdapter dt1 = new DataSet1TableAdapters.TBL_OGRENCITableAdapter();
@@ -39,8 +41,8 @@ namespace WebApplication2
             bool durum = false;
             if (ort <= 50)
             {
-
                 durum = false;
+                
             }
             else if (ort >= 50)
             {

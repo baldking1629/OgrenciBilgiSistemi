@@ -53,5 +53,10 @@ namespace WebApplication2
             }
             baglanti.Close();
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SifremiUnuttum.aspx");
+        }
     }
 }
