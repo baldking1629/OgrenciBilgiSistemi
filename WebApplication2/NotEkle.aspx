@@ -25,8 +25,8 @@
                 <asp:TextBox ID="TxtSınav2" runat="server" CssClass="form-control" Width="200px"></asp:TextBox>
             </div>
              <div>
-                <asp:Label for="TxtSınav3" runat="server">SINAV 3</asp:Label>
-                <asp:TextBox ID="TxtSınav3" runat="server" CssClass="form-control" Width="200px"></asp:TextBox>
+                
+              <asp:Label ID="lblHataMesaji" runat="server" Visible="false" ForeColor="Red"></asp:Label> 
             </div>
            
         </div>

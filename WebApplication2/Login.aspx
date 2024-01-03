@@ -13,7 +13,13 @@
         }
     </style>
 </head>
-<body style="background-image:url(' logo/2539d05d-da06-4c58-94fe-c6c4b88befb4.jpg')">
+                <br />
+
+            <br />
+<body style="background-image: url('logo/2539d05d-da06-4c58-94fe-c6c4b88befb4.jpg');
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-size: cover;">
 
     <form id="form1" runat="server">
 
@@ -26,12 +32,12 @@
             <br />
             <div>
                 
-                <asp:TextBox ID="TxtNumara" runat="server" CssClass="form-control" Width="350px" ></asp:TextBox>
+                <asp:TextBox ID="TxtNumara" runat="server" CssClass="form-control" Width="350px" placeholder="Kullanıcı Adı"></asp:TextBox>
             </div>
             <br />
             <div>
-                <asp:Label for="TxtSifre" runat="server">ŞİFRE </asp:Label>
-                <asp:TextBox ID="TxtSifre" runat="server" CssClass="form-control" Width="350px" TextMode="Password"></asp:TextBox>
+                
+                <asp:TextBox ID="TxtSifre" runat="server" CssClass="form-control" Width="350px" placeholder="Şifre" TextMode="Password"></asp:TextBox>
             </div>
             <br />
             <asp:Button ID="Button1" runat="server" Text="GİRİŞ YAP" CssClass="btn btn-info" Width="350px" OnClick="Button1_Click"   />
@@ -39,6 +45,8 @@
             <br />
             <asp:Button ID="Button2" runat="server" Text="ŞİFREMİ UNUTTUM" CssClass="btn btn-default  " Width="170px" OnClick="Button2_Click"/>
             <asp:Button ID="Button3" runat="server" Text="ÖĞRETMEN GİRİŞİ" CssClass="btn btn-info  " Width="170px" OnClick="Button3_Click" />
+            
+
         </div>
 
     </form>

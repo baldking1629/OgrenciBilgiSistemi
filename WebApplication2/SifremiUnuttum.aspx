@@ -13,7 +13,13 @@
         }
     </style>
 </head>
-<body style="background-image: url(' logo/2539d05d-da06-4c58-94fe-c6c4b88befb4.jpg')">
+            <br />
+                <br />
+
+<body style="background-image: url(' logo/2539d05d-da06-4c58-94fe-c6c4b88befb4.jpg');
+background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-size: cover;"">
 
     <form id="form2" runat="server">
 

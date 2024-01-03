@@ -31,5 +31,6 @@
             </div>
         </div>
         <asp:Button ID="Button4" runat="server" Text="GÜNCELLE" CssClass="btn btn-success" OnClick="Button4_Click" />
+        <asp:Label ID="lblHataMesaji" runat="server" Visible="false" ForeColor="Red"></asp:Label>
     </form>
 </asp:Content>

@@ -7,12 +7,12 @@
 
         <tr>
 
-            <th scope="col">ÖĞRENCİ ID</th>
+            <th scope="col">ÖĞRENCİ NUMARASI</th>
             <th scope="col">AD SOYAD</th>
             <th scope="col">DERS ADI</th>
-            <th scope="col">SINAV1</th>
-            <th scope="col">SINAV2</th>
-            <th scope="col">SINAV3</th>
+            <th scope="col">VİZE</th>
+            <th scope="col">FİNAL</th>
+            <th scope="col">BÜT</th>
             <th scope="col">ORTALAMA</th>
             <th scope="col">DURUM</th>
         </tr>
@@ -21,7 +21,7 @@
             <asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
                     <tr>
-                        <td><%#Eval("OGRENCIID")%></td>
+                        <td><%#Eval("NUMARA")%></td>
                         <td><%#Eval("OGRENCIADSOYAD")%></td>
                         <td><%#Eval("DERSAD")%></td>
                         <td><%#Eval("SINAV1")%></td>
@@ -31,7 +31,8 @@
                         <td><%#Eval("DURUM") %></td>
 
                         <td>
-                            <asp:HyperLink NavigateUrl='<%#"NotGuncelle.aspx?NOTID="+Eval( "NOTID") %>' ID="HyperLink2" runat="server" CssClass="btn btn-success">GÜNCELLE</asp:HyperLink>
+
+                            <asp:HyperLink NavigateUrl='<%#"NotGuncelle.aspx?NOTID="+Eval( "NOTID") %>' ID="HyperLink2" runat="server" CssClass="btn btn-success" Visible='<%# Eval("DURUM").ToString() != "True" %>'>GÜNCELLE</asp:HyperLink>
                         </td>
                     </tr>
                 </ItemTemplate>

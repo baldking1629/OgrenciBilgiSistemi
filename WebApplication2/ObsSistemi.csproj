@@ -246,7 +246,6 @@
     <Content Include="DersEkle.aspx" />
     <Content Include="DersGuncelle.aspx" />
     <Content Include="DersListesi.aspx" />
-    <Content Include="DersSil.aspx" />
     <Content Include="Dosyalar1\bootstrap-3.3.7\dist\css\bootstrap-theme.css" />
     <Content Include="Dosyalar1\bootstrap-3.3.7\dist\css\bootstrap-theme.min.css" />
     <Content Include="Dosyalar1\bootstrap-3.3.7\dist\css\bootstrap.css" />
@@ -704,6 +703,9 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -729,13 +731,6 @@
     </Compile>
     <Compile Include="DersListesi.aspx.designer.cs">
       <DependentUpon>DersListesi.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DersSil.aspx.cs">
-      <DependentUpon>DersSil.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DersSil.aspx.designer.cs">
-      <DependentUpon>DersSil.aspx</DependentUpon>
     </Compile>
     <Compile Include="DuyuruEkle.aspx.cs">
       <DependentUpon>DuyuruEkle.aspx</DependentUpon>

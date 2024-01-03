@@ -12,12 +12,13 @@ namespace WebApplication2
         int id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            id = Convert.ToInt32(Request.QueryString["OGRID"].ToString());
+
             if (Page.IsPostBack == false)
             {
                 try
                 {
-                    id = Convert.ToInt32(Request.QueryString["OGRID"].ToString());
-                    TxtOgrid.Text = id.ToString();
+                    //TxtOgrid.Text = id.ToString();
                     DataSet1TableAdapters.TBL_OGRENCITableAdapter dt = new DataSet1TableAdapters.TBL_OGRENCITableAdapter();
                     TxtOgrAd.Text = dt.OgrenciSec(id)[0].OGRAD;
                     TxtOgrSoyad.Text = dt.OgrenciSec(id)[0].OGRSOYAD;
@@ -36,7 +37,21 @@ namespace WebApplication2
         protected void Button1_Click(object sender, EventArgs e)
         {
             DataSet1TableAdapters.TBL_OGRENCITableAdapter dt = new DataSet1TableAdapters.TBL_OGRENCITableAdapter();
-            dt.OgrenciGuncelle(TxtOgrAd.Text, TxtOgrSoyad.Text, TxtOgrTel.Text, TxtOgrMail.Text, TxtOgrSifre.Text, Convert.ToInt32(TxtOgrid.Text));
+            if (TxtOgrTel.Text.Length != 11 || !TxtOgrTel.Text.All(char.IsDigit))
+            {
+                lblHataMesaji.Text = "Telefon numarası 11 haneli ve sayılardan oluşmalıdır.";
+                lblHataMesaji.Visible = true;
+                return;
+            }
+
+            // Mail adresini kontrol et
+            if (!TxtOgrMail.Text.EndsWith("@gmail.com"))
+            {
+                lblHataMesaji.Text = "Mail adresi @gmail.com ile bitmelidir.";
+                lblHataMesaji.Visible = true;
+                return;
+            }
+            dt.OgrenciGuncelle(TxtOgrAd.Text, TxtOgrSoyad.Text, TxtOgrTel.Text, TxtOgrMail.Text, TxtOgrSifre.Text, id);
             Response.Redirect("Anasayfa.aspx");
         }
     }
